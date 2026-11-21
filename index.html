@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a7a4a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Flower Garden Hotel | Port Harcourt | Book Direct & Save</title>
@@ -61,9 +65,13 @@ nav{display:flex}
 </style>
 </head>
 <body>
-
-<div class="topbar"><span>📍 Flower Garden Hotel, GRA, Port Harcourt</span><span>📞 0803 123 4567</span></div>
-
+  <!-- DOWNLOAD APP BUTTON FOR TOP -->
+<div style="background:#1a7a4a; padding:10px; text-align:center; position:sticky; top:0; z-index:999;">
+  <button id="downloadBtn" style="background:white; color:#1a7a4a; border:none; padding:10px 20px; border-radius:25px; font-weight:bold; font-size:16px; cursor:pointer;">
+    ⬇️ Download Our App
+  </button>
+</div>
+<div class="topbar"><span>📍 Flower Garden Hotel, GRA, Port Harcourt</span><span>📞 07026510390</span></div>
 <header>
 <div class="logo">🌸 Flower <span>Garden</span></div>
 <nav><a href="#rooms">Rooms</a><a href="#gallery">Gallery</a><a href="#amenities">Amenities</a><a href="#reviews">Reviews</a><a href="#" onclick="openAdmin()">Admin</a></nav>
@@ -220,6 +228,34 @@ let today=new Date().toISOString().split('T')[0];
 document.getElementById('checkin').value=today;
 let tmr=new Date(Date.now()+86400000).toISOString().split('T')[0];
 document.getElementById('checkout').value=tmr;
+</script>
+<script>
+let deferredPrompt;
+const btn = document.getElementById('downloadBtn');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  btn.style.display = 'inline-block';
+});
+
+btn.addEventListener('click', async () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    const choice = await deferredPrompt.userChoice;
+    if (choice.outcome === 'accepted') {
+      alert('Thanks! Flower Garden App dey install now...');
+    }
+    deferredPrompt = null;
+  } else {
+    alert('To install: Press 3 dots for Chrome → Install App / Add to Home Screen');
+  }
+});
+
+// Register Service Worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
 </script>
 </body>
 </html>

@@ -1,0 +1,16 @@
+{
+  "name": "Flower Garden Hotel",
+  "short_name": "Flower Garden",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a7a4a",
+  "description": "Flower Garden Hotel and Booking System",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/235/235808.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
