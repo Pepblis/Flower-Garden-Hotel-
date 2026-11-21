@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flower Garden Hotel | Port Harcourt | Book Direct & Save</title>
+<meta name="description" content="Flower Garden Hotel Port Harcourt - Luxury rooms, pool, restaurant, 24/7 power. Book direct and save 15%.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#FFFDF8;color:#1A1A1A}
+h1,h2,h3{font-family:'Playfair Display',serif}
+.topbar{background:#0F3D2E;color:#fff;padding:8px 16px;font-size:13px;display:flex;justify-content:space-between}
+header{position:sticky;top:0;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.08);z-index:50;display:flex;justify-content:space-between;align-items:center;padding:14px 16px}
+.logo{font-size:22px;font-weight:700;color:#0F3D2E}
+.logo span{color:#C9A227}
+nav{display:none;gap:18px}
+nav a{text-decoration:none;color:#222;font-weight:600;font-size:14px}
+.btn{background:#C9A227;color:#fff;border:none;padding:12px 18px;border-radius:999px;font-weight:700;cursor:pointer}
+.btn-green{background:#0F3D2E}
+.hero{background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80&auto=format&fit=crop');background-size:cover;background-position:center;color:#fff;padding:60px 16px 30px;text-align:center}
+.hero h1{font-size:38px;line-height:1.1}
+.hero p{margin:14px 0 20px;opacity:.9}
+.searchBox{background:#fff;color:#111;border-radius:16px;padding:16px;display:grid;gap:12px;max-width:900px;margin:22px auto 0;text-align:left;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+.searchBox label{font-size:12px;font-weight:700;color:#666}
+.searchBox input,.searchBox select{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;margin-top:4px}
+.section{padding:32px 16px;max-width:1100px;margin:auto}
+.section h2{font-size:28px;margin-bottom:6px}
+.muted{color:#666;font-size:14px;margin-bottom:18px}
+.grid{display:grid;gap:16px}
+.room{background:#fff;border:1px solid #eee;border-radius:18px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.room img{width:100%;height:210px;object-fit:cover}
+.room-body{padding:16px}
+.badge{background:#E8F5E9;color:#0F3D2E;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700}
+.price{font-size:22px;font-weight:800;margin:10px 0 4px}
+.price small{font-size:13px;color:#888;font-weight:400}
+.amen{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.amen span{background:#F5F5F5;padding:6px 10px;border-radius:999px;font-size:12px}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gallery img{width:100%;height:140px;object-fit:cover;border-radius:14px}
+.review{background:#0F3D2E;color:#fff;border-radius:18px;padding:20px}
+.review-grid{display:grid;gap:12px;margin-top:14px}
+.review-card{background:rgba(255,255,255,.1);padding:14px;border-radius:14px}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:99;align-items:flex-end;justify-content:center}
+.modal.open{display:flex}
+.modal-box{background:#fff;width:100%;max-width:520px;border-radius:20px 20px 0 0;padding:20px;max-height:90vh;overflow:auto}
+.modal-box input,.modal-box select{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;margin:6px 0 12px}
+footer{background:#0F3D2E;color:#fff;padding:28px 16px;text-align:center}
+footer a{color:#FFD700}
+@media(min-width:768px){
+nav{display:flex}
+.hero h1{font-size:58px}
+.searchBox{grid-template-columns:1fr 1fr 1fr auto;align-items:end}
+.grid{grid-template-columns:1fr 1fr}
+.gallery{grid-template-columns:repeat(4,1fr)}
+.gallery img{height:180px}
+.review-grid{grid-template-columns:repeat(3,1fr)}
+.modal{align-items:center}
+.modal-box{border-radius:20px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"><span>📍 Flower Garden Hotel, GRA, Port Harcourt</span><span>📞 0803 123 4567</span></div>
+
+<header>
+<div class="logo">🌸 Flower <span>Garden</span></div>
+<nav><a href="#rooms">Rooms</a><a href="#gallery">Gallery</a><a href="#amenities">Amenities</a><a href="#reviews">Reviews</a><a href="#" onclick="openAdmin()">Admin</a></nav>
+<button class="btn" onclick="scrollToRooms()">Book Now</button>
+</header>
+
+<section class="hero">
+<h1>Sleep In Luxury.<br>Wake Up In A Garden.</h1>
+<p>4.9 ★ Rated • 24/7 Power • Free Breakfast • Swimming Pool • Airport Pickup<br>Book direct and save 15% — no extra charges.</p>
+<div class="searchBox">
+<div><label>CHECK-IN</label><input type="date" id="checkin"></div>
+<div><label>CHECK-OUT</label><input type="date" id="checkout"></div>
+<div><label>GUESTS</label><select id="guests"><option>1 Guest</option><option>2 Guests</option><option>3 Guests</option><option>4+ Guests</option></select></div>
+<button class="btn" onclick="scrollToRooms()">Check Availability →</button>
+</div>
+<p style="font-size:13px;margin-top:12px">🔥 12 people booked this week • Only 3 Deluxe rooms left for this weekend</p>
+</section>
+
+<section class="section" id="rooms">
+<h2>Choose Your Room</h2>
+<p class="muted">All rooms include AC, Free WiFi, Smart TV, Fridge, Breakfast & Daily Cleaning.</p>
+<div class="grid" id="roomList"></div>
+</section>
+
+<section class="section" id="amenities">
+<h2>Hotel Amenities</h2>
+<div class="amen"><span>🏊 Swimming Pool</span><span>🍽️ Restaurant & Bar</span><span>🏋️ Gym</span><span>⚡ 24/7 Power</span><span>📶 Free WiFi</span><span>🚗 Free Parking</span><span>✈️ Airport Pickup</span><span>🧺 Laundry</span><span>🛎️ Room Service</span><span>👨‍👩‍👧 Family Friendly</span></div>
+</section>
+
+<section class="section" id="gallery">
+<h2>Gallery</h2>
+<div class="gallery">
+<img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800&q=80&auto=format&fit=crop">
+<img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&q=80&auto=format&fit=crop">
+<img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800&q=80&auto=format&fit=crop">
+<img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80&auto=format&fit=crop">
+</div>
+</section>
+
+<section class="section" id="reviews">
+<div class="review">
+<h2>What Guests Say ⭐ 4.9 / 5</h2>
+<div class="review-grid">
+<div class="review-card"><b>Amaka O. — Lagos</b><p>"Cleanest hotel I don stay for PH. The garden view for morning na heaven."</p>⭐⭐⭐⭐⭐</div>
+<div class="review-card"><b>Chief Ibiye — Bayelsa</b><p>"I bring my clients here always. Staff dey respectful, food sweet."</p>⭐⭐⭐⭐⭐</div>
+<div class="review-card"><b>David E. — Abuja</b><p>"Booked online in 2 minutes. Airport pickup wait me already. Professional!"</p>⭐⭐⭐⭐⭐</div>
+</div>
+</div>
+</section>
+
+<section class="section" style="text-align:center">
+<h2>Need Help Booking?</h2>
+<p class="muted">Chat with us now on WhatsApp, we go reply in 2 minutes.</p>
+<a href="https://wa.me/2348031234567?text=Hello%20Flower%20Garden,%20I%20want%20to%20book%20a%20room" target="_blank"><button class="btn btn-green">💬 Book On WhatsApp</button></a>
+</section>
+
+<footer>
+<h3>🌸 Flower Garden Hotel</h3>
+<p>GRA Phase 2, Port Harcourt, Rivers State<br>📞 0803 123 4567 • ✉️ hello@flowergarden.ng</p>
+<p style="font-size:12px;opacity:.7;margin-top:12px">Demo built by Road Senseng — Rebrandable for any hotel in 5 minutes.<br><a href="#" onclick="openAdmin()">Owner Login / Admin Dashboard</a></p>
+</footer>
+
+<!-- BOOKING MODAL -->
+<div class="modal" id="bookModal">
+<div class="modal-box">
+<h2 id="bookTitle">Book Room</h2>
+<p id="bookSummary" style="color:#666;font-size:14px"></p>
+<label>Your Full Name</label><input id="custName" placeholder="e.g. Amaka Obi">
+<label>Phone / WhatsApp</label><input id="custPhone" placeholder="0803...">
+<label>Check-in</label><input type="date" id="bCheckin">
+<label>Check-out</label><input type="date" id="bCheckout">
+<label>Guests</label><select id="bGuests"><option>1</option><option>2</option><option>3</option><option>4</option></select>
+<div style="background:#FFF8E1;padding:12px;border-radius:12px;margin:10px 0"><b>Total: <span id="totalPrice">₦0</span></b><br><small id="nightsInfo"></small><br><small>Pay on arrival or transfer. Free cancellation before 24hrs.</small></div>
+<button class="btn btn-green" style="width:100%" onclick="confirmBooking()">Confirm Booking →</button>
+<button onclick="closeModal()" style="width:100%;margin-top:8px;padding:12px;border:none;background:none;cursor:pointer">Cancel</button>
+</div>
+</div>
+
+<!-- ADMIN MODAL -->
+<div class="modal" id="adminModal">
+<div class="modal-box">
+<h2>Owner Dashboard — Flower Garden</h2>
+<p style="color:#666;font-size:14px">All bookings wey come from website dey here.</p>
+<div id="adminStats" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0"></div>
+<div id="adminList"></div>
+<button onclick="clearBookings()" style="background:#ffebee;border:none;padding:10px;border-radius:10px;cursor:pointer">Clear All Bookings (Demo)</button>
+<button onclick="closeAdmin()" style="width:100%;margin-top:10px;padding:12px;border:none;background:none;cursor:pointer">Close</button>
+</div>
+</div>
+
+<script>
+const rooms=[
+{name:"Standard Garden Room",price:45000,img:"https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1000&q=80&auto=format&fit=crop",desc:"Perfect for solo travellers. Garden view, queen bed, work desk.",tag:"MOST BOOKED"},
+{name:"Deluxe King Room",price:65000,img:"https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1000&q=80&auto=format&fit=crop",desc:"King bed, balcony, bathtub, 55-inch Smart TV.",tag:"POPULAR"},
+{name:"Executive Suite",price:95000,img:"https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=1000&q=80&auto=format&fit=crop",desc:"Separate sitting room, mini bar, premium breakfast.",tag:"LUXURY"},
+{name:"Royal Family Suite",price:150000,img:"https://images.unsplash.com/photo-1591088398332-8a7791972843?w=1000&q=80&auto=format&fit=crop",desc:"2 bedrooms, kitchen, 4 guests, private garden access.",tag:"FAMILY"}
+];
+let selectedRoom=null;
+function renderRooms(){
+document.getElementById('roomList').innerHTML=rooms.map((r,i)=>`
+<div class="room"><img src="${r.img}"><div class="room-body">
+<span class="badge">${r.tag}</span>
+<h3 style="margin-top:8px">${r.name}</h3>
+<p style="color:#666;font-size:14px">${r.desc}</p>
+<div class="amen"><span>📶 WiFi</span><span>❄️ AC</span><span>📺 Smart TV</span><span>🍳 Breakfast</span></div>
+<div class="price">₦${r.price.toLocaleString()} <small>/ night</small></div>
+<button class="btn" style="width:100%" onclick="openBook(${i})">Book This Room →</button>
+</div></div>`).join('');
+}
+function scrollToRooms(){document.getElementById('rooms').scrollIntoView({behavior:'smooth'})}
+function openBook(i){
+selectedRoom=rooms[i];
+document.getElementById('bookTitle').innerText='Book: '+selectedRoom.name;
+document.getElementById('bCheckin').value=document.getElementById('checkin').value;
+document.getElementById('bCheckout').value=document.getElementById('checkout').value;
+updateTotal();
+document.getElementById('bookModal').classList.add('open');
+}
+function closeModal(){document.getElementById('bookModal').classList.remove('open')}
+function updateTotal(){
+if(!selectedRoom) return;
+let ci=new Date(document.getElementById('bCheckin').value);
+let co=new Date(document.getElementById('bCheckout').value);
+let nights=Math.max(1,Math.round((co-ci)/(1000*60*60*24))||1);
+let total=nights*selectedRoom.price;
+document.getElementById('totalPrice').innerText='₦'+total.toLocaleString();
+document.getElementById('nightsInfo').innerText=nights+' night(s) x ₦'+selectedRoom.price.toLocaleString();
+document.getElementById('bookSummary').innerText=selectedRoom.name+' — '+nights+' night(s)';
+}
+document.getElementById('bCheckin').addEventListener('change',updateTotal);
+document.getElementById('bCheckout').addEventListener('change',updateTotal);
+function confirmBooking(){
+let name=document.getElementById('custName').value;
+let phone=document.getElementById('custPhone').value;
+if(!name||!phone){alert('Please put your name and phone');return}
+let bookings=JSON.parse(localStorage.getItem('fg_bookings')||'[]');
+bookings.push({name,phone,room:selectedRoom.name,checkin:document.getElementById('bCheckin').value,checkout:document.getElementById('bCheckout').value,total:document.getElementById('totalPrice').innerText,date:new Date().toLocaleString()});
+localStorage.setItem('fg_bookings',JSON.stringify(bookings));
+closeModal();
+alert('✅ Booking Confirmed!\n\n'+name+', your '+selectedRoom.name+' is reserved.\nTotal: '+document.getElementById('totalPrice').innerText+'\nWe go call you for '+phone+' to confirm.\n\nYou fit also WhatsApp us.');
+window.open('https://wa.me/2348031234567?text='+encodeURIComponent('Hello Flower Garden, I just booked '+selectedRoom.name+' for '+name+' Total '+document.getElementById('totalPrice').innerText),'_blank');
+}
+function openAdmin(){
+let bookings=JSON.parse(localStorage.getItem('fg_bookings')||'[]');
+let total=bookings.reduce((s,b)=>s+parseInt(b.total.replace(/[^0-9]/g,'')||0),0);
+document.getElementById('adminStats').innerHTML=`<div style="background:#E8F5E9;padding:14px;border-radius:12px"><b>${bookings.length}</b><br><small>Total Bookings</small></div><div style="background:#FFF8E1;padding:14px;border-radius:12px"><b>₦${total.toLocaleString()}</b><br><small>Expected Revenue</small></div>`;
+document.getElementById('adminList').innerHTML=bookings.length?bookings.map(b=>`<div style="border:1px solid #eee;padding:12px;border-radius:12px;margin-bottom:8px"><b>${b.room}</b><br>${b.name} — ${b.phone}<br><small>${b.checkin} to ${b.checkout} • ${b.total} • ${b.date}</small></div>`).join(''):'<p>No bookings yet. Share link to get bookings.</p>';
+document.getElementById('adminModal').classList.add('open');
+}
+function closeAdmin(){document.getElementById('adminModal').classList.remove('open')}
+function clearBookings(){localStorage.removeItem('fg_bookings');openAdmin()}
+renderRooms();
+let today=new Date().toISOString().split('T')[0];
+document.getElementById('checkin').value=today;
+let tmr=new Date(Date.now()+86400000).toISOString().split('T')[0];
+document.getElementById('checkout').value=tmr;
+</script>
+</body>
+</html>
